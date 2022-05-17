@@ -1,0 +1,29 @@
+.container-presentation {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	border: 1px solid var(--primary-light);
+}
+
+.container-presentation h2 {
+	margin-bottom: 10px;
+}
+
+.article {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+	padding: 20px;
+	border: 1px solid var(--primary-light);
+}
+
+/* Contact CTA */
+
+.contact-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+	padding: 20px;
+	border: 1px solid var(--primary-light);
+}

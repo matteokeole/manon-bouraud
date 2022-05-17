@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Administration{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/admin.css')}}">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="container-title">
+			<h1>Administration</h1>
+			
+			{# Logout link #}
+			<a href="{{path('app_logout')}}" class="logout">
+				<span>Se déconnecter</span>
+				<ion-icon name="arrow-forward-outline"></ion-icon>
+			</a>
+		</div>
+
+		{# Actuality edition success #}
+		{% if isEdited %}
+			<div class="alert alert-success">
+				<span>
+					L'actualité a été modifiée avec succès.
+				</span>
+
+				<button class="close" title="Fermer">
+					<ion-icon name="close-outline"></ion-icon>
+				</button>
+			</div>
+		{% endif %}
+
+		{{form_start(actuality)}}
+			<h2>Modifier l'actualité</h2>
+			<p>
+				L'actualité vous permet de donner des informations importantes aux visiteurs du site.<br>
+				Si vous laissez la zone de texte vide, le bloc Actualité ne sera pas affiché sur la page d'accueil.
+			</p>
+
+			{# Content textarea #}
+			{{form_widget(actuality.content)}}
+
+			{# Visible attribute #}
+			<div class="checkbox">
+				{{form_widget(actuality.visible)}}
+				{{form_label(actuality.visible)}}
+			</div>
+
+			<div class="actions">
+				{{form_row(actuality.submit)}}
+			</div>
+		{{form_end(actuality)}}
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+	<script src="{{asset('js/actuality-editor.js')}}"></script>
+	<script src="{{asset('js/close-alert.js')}}"></script>
+{% endblock %}

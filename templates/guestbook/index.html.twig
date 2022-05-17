@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Livre d'or{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/guestbook.css')}}">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{# Guestbook comment list #}
+		<section>
+			<h1>Livre d'or</h1>
+			<ul class="comment-list">
+				{% if comments|length == 0 %}
+					<div class="no-comment">Aucun commentaire</div>
+				{% else %}
+					{% for comment in comments %}
+						<li class="comment">
+							<div class="header">
+								{{comment.author}} •
+								<span><i>le {{comment.date}}</i></span>
+							</div>
+							<p>{{comment.message}}</p>
+						</li>
+					{% endfor %}
+				{% endif %}
+			</ul>
+		</section>
+
+		{# Aside menu #}
+		<aside>
+			{# Comment thank message #}
+			{% if hasCommented %}
+				<div class="alert alert-success">
+					<span>
+						Merci pour votre commentaire !
+					</span>
+
+					<button class="close" title="Fermer">
+						<ion-icon name="close-outline"></ion-icon>
+					</button>
+				</div>
+			{% endif %}
+
+			{# Comment creation form #}
+			{{form_start(guestbook)}}
+				<h2>Un petit commentaire ?</h2>
+				<div>{{form_widget(guestbook.author)}}</div>
+				<div>{{form_widget(guestbook.message)}}</div>
+				<div class="actions">
+					{{form_widget(guestbook.submit)}}
+				</div>
+			{{form_end(guestbook)}}
+		</aside>
+		<h1 class="h1-2">Livre d'or</h1>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{asset('js/close-alert.js')}}"></script>
+{% endblock %}

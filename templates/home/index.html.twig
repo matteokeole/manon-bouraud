@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/presentation.css')}}">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Accueil</h1>
+
+		{# Actuality section #}
+		{% if actuality.visible and actuality.content %}
+			<article class="article">
+				<h2>Dernière actualité</h2>
+				<p>
+					{{actuality.content|raw}}
+				</p>
+			</article>
+		{% endif %}
+
+		{# Presentation section #}
+		<div class="container-presentation">
+			<div class="description">
+				<h2>Qui suis-je ?</h2>
+				<p>
+					Je m'appelle Manon Bouraud et je suis enseignante en <i>APA</i> (activité physique adaptée),<br>
+					spécialisée dans le domaine des maladies chroniques et de la tabacologie.<br>
+					Dans un cadre <b>bienveillant et ludique</b>, je propose des séances de marche nordique,<br>
+					des consultations d'aide à l'arrêt du tabac et des formations pour les professionnels.
+				</p>
+			</div>
+			{# <img src="{{asset('images/photo.png')}}" alt="Photo"> #}
+		</div>
+
+		{# Contact section #}
+		<div class="contact-container">
+			<h2>Une question ?</h2>
+			<a href="{{path('contact')}}" class="block">Contactez-moi</a>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+/* Montserrat import */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+/* CSS imports */
+@import url(header.css);
+@import url(footer.css);
+@import url(form.css);
+@import url(alert.css);
+
+:root {
+	/* Blue */
+	--primary: #246696;
+	--primary-light: #bed1e0;
+	/* Yellow */
+	--secondary: #f8c931;
+	--secondary-dark: #e0a122;
+	--secondary-border: #7b6418;
+	/* Green */
+	--tertiary: #3b7d6f;
+	--tertiary-transparent: #3b7d6ff0;
+	/* Error red */
+	--error: #a9464b;
+	--error-light: #f0c9cb;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Montserrat;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+}
+
+main {
+	width: 70%;
+	margin: 50px 0 30px 0;
+}
+
+h1 {
+	margin-bottom: 10px;
+	font-size: 30px;
+}
+
+h2 {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.container {margin-top: 30px}
+
+/* Block link/submit button style */
+a.block, button[type="submit"] {
+	padding: 5px 30px;
+	right: 4px;
+	bottom: 4px;
+	position: relative;
+	border: 1px solid var(--secondary-border);
+	box-shadow:
+		var(--secondary-border) 1px 1px 0,
+		var(--secondary-border) 1px 1px 0,
+		var(--secondary-border) 2px 2px 0,
+		var(--secondary-border) 2px 2px 0,
+		var(--secondary-border) 3px 3px 0,
+		var(--secondary-border) 3px 3px 0,
+		var(--secondary-border) 4px 4px 0,
+		var(--secondary-border) 4px 4px 0;
+	background-color: var(--secondary);
+	color: #000;
+	cursor: pointer;
+	text-decoration: none;
+	transition-duration: .3s;
+}
+a.block:active, button[type="submit"]:active {
+	right: 0;
+	bottom: 0;
+	box-shadow: none;
+	transition-duration: .15s;
+}
+
+@media screen and (max-width: 768px) {
+	body {align-items: stretch}
+	main {
+		width: auto;
+		padding: 0 20px;
+	}
+	footer .content, footer .copyright {padding: 20px}
+	footer .content p:last-child {flex-direction: column}
+}
+
+@media screen and (max-width: 420px) {
+	main {padding: 0 10px}
+	footer .content, footer .copyright {padding: 20px 10px}
+}

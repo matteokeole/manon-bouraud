@@ -1,0 +1,108 @@
+/* Header */
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	top: 0;
+	position: fixed;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+	background-color: var(--tertiary-transparent);
+	z-index: 1;
+}
+
+/* Navbar */
+header nav {display: flex}
+
+/* Header default links */
+header a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 34px;
+	padding: 0 8px;
+	color: #000;
+	text-align: right;
+	text-decoration: none;
+	font-size: 16px;
+}
+header a:hover {opacity: .65}
+
+/* Logo */
+header #logo {
+	width: 34px;
+	padding: 0;
+	margin-left: 8px;
+	border-radius: 50%;
+	background-color: var(--secondary);
+}
+
+/* Dropdown menu */
+
+header #dropdown-content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	visibility: hidden;
+	position: absolute;
+	padding-top: 8px;
+	background-color: var(--tertiary);
+}
+header #dropdown-toggler:hover + #dropdown-content, header #dropdown-content:hover {visibility: visible}
+
+header #dropdown-content a {
+	color: #fff;
+	font-size: 14px;
+}
+
+/* Dropdown toggler */
+header #dropdown-toggler ion-icon {
+	margin-left: 4px;
+	font-size: 18px;
+	transition-duration: .2s;
+}
+header #dropdown-toggler:hover ion-icon {
+	-webkit-transform: rotateZ(180deg);
+	transform: rotateZ(180deg);
+}
+
+/* Guestbook link */
+header #guestbook-link {
+	margin: 0 8px 0 4px;
+	padding: 0 12px;
+	border-radius: 34px;
+	background-color: var(--secondary);
+}
+
+/* Mobile menu */
+
+header #menu {display: none}
+
+header #menu-content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	visibility: hidden;
+	padding-bottom: 8px;
+	right: 0;
+	position: absolute;
+	background-color: var(--tertiary);
+}
+header #menu-toggler:hover + #menu-content, header #menu-content:hover {visibility: visible}
+
+header #menu-content a {
+	color: #fff;
+	font-size: 14px;
+}
+
+/* Menu toggler */
+header #menu-toggler {width: 34px}
+header #menu-toggler ion-icon {font-size: 24px}
+
+/* Media queries */
+
+@media screen and (max-width: 620px) {
+	header nav {display: none}
+	header #menu {display: block}
+}

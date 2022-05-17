@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/contact.css')}}">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{% if isSent %}
+			{# E-mail successfully sent #}
+			<div class="alert alert-success">
+				<span>
+					Votre message a bien été envoyé.<br>
+					Je vous répondrai dès que possible !
+				</span>
+
+				<button class="close" title="Fermer">
+					<ion-icon name="close-outline"></ion-icon>
+				</button>
+			</div>
+		{% elseif error %}
+			{# E-mail sending error #}
+			<div class="alert alert-error">
+				<span>
+					{{error|raw}}
+				</span>
+
+				<button class="close" title="Fermer">
+					<ion-icon name="close-outline"></ion-icon>
+				</button>
+			</div>
+		{% endif %}
+
+		<h1>Contact</h1>
+
+		{# Contact form #}
+		{{form_start(contact)}}
+			<h2>Une question ? Une idée ?</h2>
+			<p>N'hésitez pas à m'en faire part via le formulaire ci dessous !</p>
+
+			{{form_widget(contact.name)}}
+			{{form_widget(contact.email)}}
+			{{form_widget(contact.message)}}
+
+			<div class="actions">
+				{{form_widget(contact.submit)}}
+			</div>
+		{{form_end(contact)}}
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{asset('js/close-alert.js')}}"></script>
+{% endblock %}

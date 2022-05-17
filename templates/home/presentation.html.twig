@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Qui suis-je ?{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/presentation.css')}}">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Qui suis-je ?</h1>
+
+		{# Presentation section #}
+		<div class="container-presentation">
+			<div class="description">
+				<p>
+					Je m'appelle Manon Bouraud et je suis enseignante en <i>APA</i> (activité physique adaptée),<br>
+					spécialisée dans le domaine des maladies chroniques et de la tabacologie.<br>
+					Dans un cadre <b>bienveillant et ludique</b>, je propose des séances de marche nordique,<br>
+					des consultations d'aide à l'arrêt du tabac et des formations pour les professionnels.
+				</p>
+			</div>
+
+			<img src="{{asset('images/photo.png')}}" alt="Photo" width="100">
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+footer {
+	width: 100%;
+	margin-top: auto;
+	background-color: #000;
+	color: #fff;
+}
+
+footer .content {
+	width: fit-content;
+	margin: 0 auto 20px auto;
+	padding: 20px;
+}
+
+footer .content a {
+	color: #fff;
+	text-decoration: none;
+	transition: opacity .2s;
+}
+footer .content a:hover {opacity: .7}
+
+footer .content p:last-child {
+	display: flex;
+	justify-content: space-between;
+}
+
+footer .copyright {
+	width: fit-content;
+	margin: 0 auto;
+	padding: 20px;
+	opacity: .65;
+	font-size: 12px;
+}
+
+/* Administration link */
+
+footer .copyright a {
+	color: unset;
+	text-decoration: none;
+}
+footer .copyright a:hover {text-decoration: underline}

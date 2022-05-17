@@ -1,0 +1,42 @@
+.container-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+@media screen and (max-width: 540px) {
+	.container-title {
+		align-items: initial;
+		flex-direction: column;
+	}
+}
+
+h1 {margin: 0}
+
+/* Logout link */
+
+a.logout {
+	display: inline-flex;
+	align-items: center;
+	color: var(--error);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+a.logout span {
+	padding-top: 2px;
+	border-bottom: 2px solid var(--error-light);
+	transition: border-bottom-color .2s;
+}
+a.logout:hover span {
+	border-bottom-color: var(--error);
+}
+
+a.logout ion-icon {
+	margin-left: 5px;
+	font-size: 22px;
+}
+
+/* Reset TinyMCE z-index */
+.tox-tinymce {z-index: 0}

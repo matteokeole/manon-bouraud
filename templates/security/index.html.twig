@@ -1,0 +1,68 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/login.css')}}">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{# Login error #}
+		{% if error %}
+			<div class="alert alert-error">
+				<span>
+					{{error.messageKey|trans(error.messageData, "security")}}
+				</span>
+
+				<button class="close" title="Fermer">
+					<ion-icon name="close-outline"></ion-icon>
+				</button>
+			</div>
+		{% endif %}
+
+		<h1>Connexion</h1>
+
+		{# Login form #}
+		<form method="POST">
+			<p>Renseignez vos identifiants pour vous connecter à votre espace d'administration.</p>
+
+			{# E-mail input #}
+			<input
+				type="email"
+				id="email"
+				name="email"
+				value="{{last_username}}"
+				placeholder="Adresse e-mail"
+				autocomplete="email"
+				required
+			>
+
+			{# Password input #}
+			<input
+				type="password"
+				id="password"
+				name="password"
+				placeholder="Mot de passe"
+				autocomplete="current-password"
+				required
+			>
+
+			{# CSRF token #}
+			<input
+				type="hidden"
+				name="_csrf_token"
+				value="{{csrf_token('authenticate')}}"
+			>
+
+			{# Submit #}
+			<div class="actions">
+				<button type="submit" class="btn btn-lg btn-primary">Se connecter</button>
+			</div>
+		</form>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{asset('js/close-alert.js')}}"></script>
+{% endblock %}
