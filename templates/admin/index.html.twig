@@ -4,6 +4,8 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{asset('css/admin.css')}}">
+	<link rel="stylesheet" href="{{asset('css/alert.css')}}">
+	<link rel="stylesheet" href="{{asset('css/form.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -12,7 +14,7 @@
 			<h1>Administration</h1>
 			
 			{# Logout link #}
-			<a href="{{path('app_logout')}}" class="logout">
+			<a href="{{path('logout')}}" class="logout">
 				<span>Se déconnecter</span>
 				<ion-icon name="arrow-forward-outline"></ion-icon>
 			</a>
@@ -48,7 +50,7 @@
 			</div>
 
 			<div class="actions">
-				{{form_row(actuality.submit)}}
+				{{form_widget(actuality.submit)}}
 			</div>
 		{{form_end(actuality)}}
 	</div>

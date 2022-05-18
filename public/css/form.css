@@ -62,7 +62,7 @@ form .checkbox input {
 form .checkbox input:hover {box-shadow: 0 0 0 3px var(--primary-light)}
 form .checkbox input:checked {background-color: var(--primary)}
 form .checkbox input:checked::after {
-	content: "✕";
+	content: "✓";
 	top: -1px;
 	left: 2px;
 	position: absolute;

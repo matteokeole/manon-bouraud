@@ -1,4 +1,3 @@
-/* Header */
 header {
 	display: flex;
 	justify-content: space-between;
@@ -12,97 +11,89 @@ header {
 	z-index: 1;
 }
 
-/* Navbar */
-header nav {display: flex}
+header nav {
+	display: flex;
+	height: 100%;
+}
 
 /* Header default links */
 header a {
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	height: 34px;
+	height: 100%;
 	padding: 0 8px;
-	color: #000;
+	color: var(--tertiary-dark);
 	text-align: right;
 	text-decoration: none;
 	font-size: 16px;
-}
-header a:hover {opacity: .65}
-
-/* Logo */
-header #logo {
-	width: 34px;
-	padding: 0;
-	margin-left: 8px;
-	border-radius: 50%;
-	background-color: var(--secondary);
-}
-
-/* Dropdown menu */
-
-header #dropdown-content {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	visibility: hidden;
-	position: absolute;
-	padding-top: 8px;
-	background-color: var(--tertiary);
-}
-header #dropdown-toggler:hover + #dropdown-content, header #dropdown-content:hover {visibility: visible}
-
-header #dropdown-content a {
-	color: #fff;
-	font-size: 14px;
-}
-
-/* Dropdown toggler */
-header #dropdown-toggler ion-icon {
-	margin-left: 4px;
-	font-size: 18px;
 	transition-duration: .2s;
 }
-header #dropdown-toggler:hover ion-icon {
-	-webkit-transform: rotateZ(180deg);
-	transform: rotateZ(180deg);
+header a:hover {color: #000}
+#logo:hover, #guestbook-link:hover, #guestbook-link-mobile:hover {opacity: .65}
+
+/* Logo */
+#logo img {
+	width: 34px;
+	border: 1px solid var(--logo);
 }
 
 /* Guestbook link */
-header #guestbook-link {
-	margin: 0 8px 0 4px;
-	padding: 0 12px;
-	border-radius: 34px;
+
+#guestbook-link {
+	height: auto;
+	margin: 8px;
+	border: 1px solid var(--secondary-border);
 	background-color: var(--secondary);
+	color: #000;
 }
 
-/* Mobile menu */
+#guestbook-link-mobile {
+	height: auto;
+	margin: 8px;
+	padding: 4px 8px;
+	border: 1px solid var(--secondary-border);
+	background-color: var(--secondary);
+	color: #000;
+}
 
-header #menu {display: none}
+/* Drop-down menu */
 
-header #menu-content {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	visibility: hidden;
-	padding-bottom: 8px;
-	right: 0;
+.dropdown-menu {
+	padding: 8px 0 4px 0;
 	position: absolute;
-	background-color: var(--tertiary);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+	opacity: 0;
+	background-color: var(--tertiary-transparent);
+	pointer-events: none;
+	transition-duration: .2s;
 }
-header #menu-toggler:hover + #menu-content, header #menu-content:hover {visibility: visible}
+.dropdown-toggler:hover + .dropdown-menu, .dropdown-menu:hover {
+	opacity: 1;
+	pointer-events: auto;
+}
 
-header #menu-content a {
-	color: #fff;
+.dropdown-menu a {
+	margin-bottom: 5px;
 	font-size: 14px;
 }
 
-/* Menu toggler */
-header #menu-toggler {width: 34px}
-header #menu-toggler ion-icon {font-size: 24px}
+/* Mobile drop-down menu */
 
-/* Media queries */
+.dropdown.menu {
+	display: none;
+	height: 100%;
+}
+
+.dropdown.menu .dropdown-menu {
+	top: 100%;
+	right: 0;
+}
+
+.dropdown .dropdown-toggler {padding: 0 10px}
+.dropdown.menu .dropdown-toggler ion-icon {font-size: 24px}
 
 @media screen and (max-width: 620px) {
 	header nav {display: none}
-	header #menu {display: block}
+
+	.dropdown.menu {display: flex}
 }

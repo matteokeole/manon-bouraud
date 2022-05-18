@@ -19,10 +19,10 @@ class AdminController extends AbstractController {
 	 * @param ActualityRepository		$actualityRepository
 	 * @param Request					$request
 	 * 
-	 * @return Response|RedirectResponse
+	 * @return RedirectResponse|Response
 	 */
 	public function index(EntityManagerInterface $manager, ActualityRepository $actualityRepository, Request $request) {
-		if (!$this->getUser()) return $this->redirectToRoute("app_login");
+		if (!$this->getUser()) return $this->redirectToRoute("login");
 
 		$isEdited = false;
 

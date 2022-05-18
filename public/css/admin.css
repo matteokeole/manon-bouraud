@@ -26,7 +26,7 @@ a.logout {
 
 a.logout span {
 	padding-top: 2px;
-	border-bottom: 2px solid var(--error-light);
+	border-bottom: 1px solid var(--error-light);
 	transition: border-bottom-color .2s;
 }
 a.logout:hover span {

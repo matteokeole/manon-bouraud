@@ -4,10 +4,10 @@
 /* CSS imports */
 @import url(header.css);
 @import url(footer.css);
-@import url(form.css);
-@import url(alert.css);
 
 :root {
+	/* Logo lightblue */
+	--logo: #00c2cb;
 	/* Blue */
 	--primary: #246696;
 	--primary-light: #bed1e0;
@@ -18,6 +18,7 @@
 	/* Green */
 	--tertiary: #3b7d6f;
 	--tertiary-transparent: #3b7d6ff0;
+	--tertiary-dark: #1f3b35;
 	/* Error red */
 	--error: #a9464b;
 	--error-light: #f0c9cb;
@@ -84,15 +85,19 @@ a.block:active, button[type="submit"]:active {
 
 @media screen and (max-width: 768px) {
 	body {align-items: stretch}
+
 	main {
 		width: auto;
 		padding: 0 20px;
 	}
+
 	footer .content, footer .copyright {padding: 20px}
+
 	footer .content p:last-child {flex-direction: column}
 }
 
 @media screen and (max-width: 420px) {
 	main {padding: 0 10px}
+
 	footer .content, footer .copyright {padding: 20px 10px}
 }

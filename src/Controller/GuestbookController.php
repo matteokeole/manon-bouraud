@@ -20,19 +20,21 @@ class GuestbookController extends AbstractController {
 	 * @param CommentRepository			$commentRepository
 	 * @param Request					$request
 	 * 
-	 * @return Response|RedirectResponse
+	 * @return RedirectResponse|Response
 	 */
 	public function index(EntityManagerInterface $manager, CommentRepository $commentRepository, Request $request) {
 		$hasCommented = false;
 
-		// Get all comments, sorted by last creation
-		$comments = $commentRepository->findBy([], ["id" => "DESC"]);
+		// Get all comments sorted by last creation
+		$comments = $commentRepository->findBy([], [
+			"date" => "DESC",
+		]);
 
 		// Create new comment
 		$comment = new Comment();
 
 		// Create form
-		$form = $this->createForm(CommentType::class, $comment, []);
+		$form = $this->createForm(CommentType::class, $comment);
 		$form->handleRequest($request);
 
 		// Handle form submit event
@@ -41,6 +43,11 @@ class GuestbookController extends AbstractController {
 
 			$manager->persist($comment);
 			$manager->flush();
+
+			// Get all comments sorted by last creation, including the new one
+			$comments = $commentRepository->findBy([], [
+				"date" => "DESC",
+			]);
 		}
 
 		return $this->render("guestbook/index.html.twig", [

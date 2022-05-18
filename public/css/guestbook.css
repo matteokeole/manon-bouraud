@@ -27,30 +27,31 @@ section {flex-grow: 1}
 	padding-bottom: 2px;
 	font-size: 14px
 }
-.comment .header span {opacity: .65}
+.comment .header i {opacity: .65}
 
 aside + h1 {display: none}
 
-/* Form aside */
+/* Comment form */
 
 aside form {
 	top: 70px;
 	position: sticky;
 }
 
+form input {display: block}
+
 form textarea {height: 100px}
 
 /* Media queries */
 
 @media screen and (max-width: 1200px) {
-	/* Change main container direction */
 	.container {flex-direction: column-reverse}
 
-	/* Container margins */
 	aside {margin-bottom: 20px}
+
 	.comment-list {margin-right: 0}
 
-	/* Headings */
 	section h1 {display: none}
+
 	aside + h1 {display: block}
 }

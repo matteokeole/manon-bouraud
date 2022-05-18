@@ -26,6 +26,26 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
 	}
 
 	/**
+	 * @param Admin	$entity
+	 * @param bool	$flush=false
+	 */
+	public function add(Admin $entity, bool $flush = false): void {
+		$this->getEntityManager()->persist($entity);
+
+		if ($flush) $this->getEntityManager()->flush();
+	}
+
+	/**
+	 * @param Admin	$entity
+	 * @param bool	$flush=false
+	 */
+	public function remove(Admin $entity, bool $flush = false): void {
+		$this->getEntityManager()->remove($entity);
+
+		if ($flush) $this->getEntityManager()->flush();
+	}
+
+	/**
 	 * Used to upgrade (rehash) the user's password automatically over time.
 	 * 
 	 * @param PasswordAuthenticatedUserInterface	$user

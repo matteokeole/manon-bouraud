@@ -10,11 +10,11 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController {
 	/**
-	 * @Route("/login", name="app_login")
+	 * @Route("/login", name="login")
 	 * 
 	 * @param AuthenticationUtils $authenticationUtils
 	 * 
-	 * @return Response|RedirectResponse
+	 * @return RedirectResponse|Response
 	 */
 	public function login(AuthenticationUtils $authenticationUtils) {
 		if ($this->getUser()) return $this->redirectToRoute("admin");
@@ -32,7 +32,7 @@ class SecurityController extends AbstractController {
 	}
 
 	/**
-	 * @Route("/logout", name="app_logout")
+	 * @Route("/logout", name="logout")
 	 * 
 	 * @throws \LogicException
 	 */
