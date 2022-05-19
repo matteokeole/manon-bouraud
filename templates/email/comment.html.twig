@@ -1,0 +1,17 @@
+{% extends "base_email.html.twig" %}
+
+{% block content %}
+	<h2>Nouveau commentaire</h2>
+
+	Vous avez un nouveau commentaire sur le livre d'or de
+	<a href="{{absolute_url(path('home'))}}">manon-bouraud.fr</a>.<br><br>
+
+	<b>Nom :</b> {{author}}<br><br>
+	<div class="message">
+		<i>{{message|raw}}</i>
+	</div><br>
+
+	<div style="text-align: right">
+		<a href="{{absolute_url(path('guestbook'))}}">Voir le livre d'or</a>
+	</div>
+{% endblock %}

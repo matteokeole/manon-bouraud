@@ -6,10 +6,13 @@ use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class GuestbookController extends AbstractController {
@@ -18,11 +21,12 @@ class GuestbookController extends AbstractController {
 	 * 
 	 * @param EntityManagerInterface	$manager
 	 * @param CommentRepository			$commentRepository
+	 * @param MailerInterface			$mailer
 	 * @param Request					$request
 	 * 
 	 * @return RedirectResponse|Response
 	 */
-	public function index(EntityManagerInterface $manager, CommentRepository $commentRepository, Request $request) {
+	public function index(EntityManagerInterface $manager, CommentRepository $commentRepository, MailerInterface $mailer, Request $request) {
 		$hasCommented = false;
 
 		// Get all comments sorted by last creation
@@ -43,6 +47,21 @@ class GuestbookController extends AbstractController {
 
 			$manager->persist($comment);
 			$manager->flush();
+
+			// Create e-mail template
+			$email = (new TemplatedEmail())
+				->from("matteo@keole.net")
+				->to("matteo@keole.net")
+				->subject("Nouveau commentaire sur manon-bouraud.fr")
+				->htmlTemplate("email/comment.html.twig")
+				->context([
+					"author"	=> $form->get("author")->getData(),
+					"message"	=> nl2br($form->get("message")->getData()),
+				]);
+
+			// Send e-mail
+			try {$mailer->send($email);}
+			catch (TransportExceptionInterface $e) {return $e;}
 
 			// Get all comments sorted by last creation, including the new one
 			$comments = $commentRepository->findBy([], [

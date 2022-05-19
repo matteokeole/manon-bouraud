@@ -30,15 +30,15 @@ class ContactController extends AbstractController {
 
 		// Handle form submit event
 		if ($form->isSubmitted() && $form->isValid()) {
+			// Create e-mail template
 			$email = (new TemplatedEmail())
 				->from($form->get("email")->getData())
 				->to("matteo@keole.net")
 				->subject("Demande de contact sur manon-bouraud.fr")
-				->htmlTemplate("base_email.html.twig")
+				->htmlTemplate("email/contact.html.twig")
 				->context([
 					"name"		=> $form->get("name")->getData(),
-					"address"	=> $form->get("email")->getData(),
-					"message"	=> $form->get("message")->getData(),
+					"message"	=> nl2br($form->get("message")->getData()),
 				]);
 
 			// Send e-mail

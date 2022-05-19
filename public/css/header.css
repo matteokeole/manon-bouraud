@@ -22,14 +22,14 @@ header a {
 	align-items: center;
 	height: 100%;
 	padding: 0 8px;
-	color: var(--tertiary-dark);
+	outline: none;
+	color: #000;
 	text-align: right;
 	text-decoration: none;
 	font-size: 16px;
-	transition-duration: .2s;
+	transition: opacity .2s;
 }
-header a:hover {color: #000}
-#logo:hover, #guestbook-link:hover, #guestbook-link-mobile:hover {opacity: .65}
+header a:hover {opacity: .65}
 
 /* Logo */
 #logo img {
@@ -65,7 +65,7 @@ header a:hover {color: #000}
 	opacity: 0;
 	background-color: var(--tertiary-transparent);
 	pointer-events: none;
-	transition-duration: .2s;
+	transition: opacity .2s;
 }
 .dropdown-toggler:hover + .dropdown-menu, .dropdown-menu:hover {
 	opacity: 1;

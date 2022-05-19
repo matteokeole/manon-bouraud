@@ -1,0 +1,14 @@
+{% extends "base_email.html.twig" %}
+
+{% block content %}
+	<h2>Demande de contact</h2>
+
+	Vous avez une nouvelle demande de contact sur 
+	<a href="{{absolute_url(path('home'))}}">manon-bouraud.fr</a>.<br><br>
+
+	<b>Nom :</b> {{name}}<br>
+	<b>Adresse e-mail :</b> {{email.from.0.address}}<br><br>
+	<div class="message">
+		<i>{{message|raw}}</i>
+	</div>
+{% endblock %}
