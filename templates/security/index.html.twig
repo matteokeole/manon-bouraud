@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="{{asset('css/login.css')}}">
 {% endblock %}
 
+{% block scripts %}
+	<script src="{{asset('js/close-alert.js')}}" defer></script>
+{% endblock %}
+
 {% block body %}
 	<div class="container">
 		{# Login error #}
@@ -61,8 +65,4 @@
 			</div>
 		</form>
 	</div>
-{% endblock %}
-
-{% block javascripts %}
-	<script src="{{asset('js/close-alert.js')}}"></script>
 {% endblock %}

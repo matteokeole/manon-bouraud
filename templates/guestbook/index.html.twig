@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="{{asset('css/guestbook.css')}}">
 {% endblock %}
 
+{% block scripts %}
+	<script src="{{asset('js/close-alert.js')}}" defer></script>
+{% endblock %}
+
 {% block body %}
 	<div class="container">
 		{# Comment list #}
@@ -64,8 +68,4 @@
 		{# Secondary title #}
 		<h1 class="h1-2">Livre d'or</h1>
 	</div>
-{% endblock %}
-
-{% block javascripts %}
-	<script src="{{asset('js/close-alert.js')}}"></script>
 {% endblock %}
